@@ -1,3 +1,5 @@
+using MauiAppHotel.Models;
+
 namespace MauiAppHotel.Views;
 
 public partial class ContratacaoHospedagem : ContentPage
@@ -6,13 +8,7 @@ public partial class ContratacaoHospedagem : ContentPage
 	{
 		InitializeComponent();
 
-		pck_quarto.ItemsSource = new List<string>
-		{
-			"Suíte Standard",
-			"Suíte Luxo",
-			"Suíte Master",
-			"Suíte Presidencial"
-		};
+		pck_quarto.ItemsSource = ((App)Application.Current!).lista_quartos;
 
 		dtpck_checkin.MinimumDate = DateTime.Today;
 		dtpck_checkin.MaximumDate = DateTime.Today.AddMonths(6);
@@ -30,6 +26,36 @@ public partial class ContratacaoHospedagem : ContentPage
 		// Check-out precisa ser pelo menos 1 dia depois do check-in
 		dtpck_checkout.MinimumDate = checkin.AddDays(1);
 		dtpck_checkout.MaximumDate = checkin.AddMonths(6);
+	}
+
+	private async void btn_avancar_Clicked(object sender, EventArgs e)
+	{
+		try
+		{
+			if (pck_quarto.SelectedItem is not Quarto quarto)
+			{
+				await DisplayAlert("Atenção", "Selecione uma suíte.", "OK");
+				return;
+			}
+
+			Hospedagem h = new Hospedagem
+			{
+				QuartoSelecionado = quarto,
+				QntAdultos = Convert.ToInt32(stp_adultos.Value),
+				QntCriancas = Convert.ToInt32(stp_criancas.Value),
+				DataCheckIn = dtpck_checkin.Date ?? DateTime.Today,
+				DataCheckOut = dtpck_checkout.Date ?? DateTime.Today.AddDays(1)
+			};
+
+			await Navigation.PushAsync(new HospedagemContratada()
+			{
+				BindingContext = h
+			});
+		}
+		catch (Exception ex)
+		{
+			await DisplayAlert("Ops", ex.Message, "OK");
+		}
 	}
 
 	private async void btn_sobre_Clicked(object sender, EventArgs e)

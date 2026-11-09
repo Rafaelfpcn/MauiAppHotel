@@ -34,7 +34,7 @@
                     <Label Text="DESENVOLVEDOR"
                            FontSize="Small"
                            TextColor="{StaticResource Tertiary}" />
-                    <Label Text="Rafael"
+                    <Label Text="Rafael Figueiredo Pereira"
                            FontSize="Medium"
                            FontAttributes="Bold" />
 
