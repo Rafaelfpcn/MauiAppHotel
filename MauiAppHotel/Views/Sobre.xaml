@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppHotel.Views.Sobre"
+             Title="Sobre"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource Secondary}">
+
+    <ScrollView>
+        <VerticalStackLayout VerticalOptions="CenterAndExpand"
+                             Padding="20"
+                             Spacing="15">
+
+            <Label Text="Sobre o App"
+                   FontFamily="Kalam"
+                   FontSize="40"
+                   TextColor="{StaticResource Primary}" />
+
+            <Frame Padding="15"
+                   CornerRadius="15"
+                   BorderColor="{StaticResource Tertiary}">
+                <VerticalStackLayout Spacing="12">
+
+                    <Label Text="Hotel Recanto Dourado"
+                           FontSize="Title"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource Primary}" />
+
+                    <Label Text="Aplicativo para cálculo de diárias de hospedagem, desenvolvido em .NET MAUI com os componentes Stepper, Picker e DatePicker." />
+
+                    <BoxView HeightRequest="1"
+                             Color="{StaticResource Tertiary}" />
+
+                    <Label Text="DESENVOLVEDOR"
+                           FontSize="Small"
+                           TextColor="{StaticResource Tertiary}" />
+                    <Label Text="Rafael"
+                           FontSize="Medium"
+                           FontAttributes="Bold" />
+
+                    <Label Text="CURSO"
+                           FontSize="Small"
+                           TextColor="{StaticResource Tertiary}" />
+                    <Label Text="Técnico em Desenvolvimento de Sistemas - ETEC" />
+
+                    <Label Text="ANO DE DESENVOLVIMENTO"
+                           FontSize="Small"
+                           TextColor="{StaticResource Tertiary}" />
+                    <Label Text="2026"
+                           FontSize="Medium"
+                           FontAttributes="Bold" />
+
+                    <Label Text="VERSÃO"
+                           FontSize="Small"
+                           TextColor="{StaticResource Tertiary}" />
+                    <Label Text="1.0" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button Text="Voltar"
+                    CornerRadius="10"
+                    Clicked="btn_voltar_Clicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
